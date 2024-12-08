@@ -1,4 +1,5 @@
-let handle_exit_status = function
+let handle_exit_status (status: Unix.process_status): string =
+  match status with
   | Unix.WEXITED n -> "Exit " ^ string_of_int n
   | Unix.WSIGNALED n -> "Kill " ^ string_of_int n
   | Unix.WSTOPPED n -> "Stopped " ^ string_of_int n
