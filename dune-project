@@ -5,22 +5,19 @@
 (generate_opam_files true)
 
 (source
- (github username/reponame))
+ (github newen-tec/scribe))
 
-(authors "Author Name <author@example.com>")
+(authors "Juno Takano <juno@newen.me>")
 
-(maintainers "Maintainer Name <maintainer@example.com>")
+(maintainers "Juno Takano <juno@newen.me>")
 
-(license LICENSE)
+(license AGPL-3.0-or-later)
 
-(documentation https://url/to/documentation)
+(documentation https://github.com/newen-tec/scribe)
 
 (package
  (name scribe)
- (synopsis "A short synopsis")
- (description "A longer description")
+ (synopsis "A speech-to-text utility")
+ (description "A speech-to-text utility to aid in transcription and translation projects")
  (depends ocaml)
- (tags
-  ("add topics" "to describe" your project)))
-
-; See the complete stanza docs at https://dune.readthedocs.io/en/stable/reference/dune-project/index.html
+)

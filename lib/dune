@@ -1,2 +1,4 @@
 (library
- (name scribe))
+ (name scribe)
+ (libraries unix)
+ )
