@@ -18,12 +18,12 @@ let pretty_output (output : process_output) : string =
 
 let execute (env: string array) (command : string): process_output =
 
-  let stdin, stdout, stderr = Unix.open_process_full command env in
+  let stdout, stdin, stderr = Unix.open_process_full command env in
   let in_buffer = Buffer.create 4096 in
   let err_buffer = Buffer.create 4096 in
 
   let rec read_in () =
-    let in_line = input_line stdin in
+    let in_line = input_line stdout in
       Buffer.add_string in_buffer in_line ;
       Buffer.add_char in_buffer '\n' ;
     read_in ()
@@ -39,7 +39,7 @@ let execute (env: string array) (command : string): process_output =
   in
   try read_err () with
     End_of_file -> let exit_status =
-      handle_exit_status (Unix.close_process_full (stdin, stdout, stderr))
+      handle_exit_status (Unix.close_process_full (stdout, stdin, stderr))
     in
     {
       output = String.trim (Buffer.contents in_buffer) ;
