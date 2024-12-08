@@ -10,11 +10,11 @@ type process_output = {
   status: string ;
 }
 
-let pretty_output (output : process_output) : string =
+let format_output (output : process_output) : string =
   match output with
     | { output = o  ; error = _ ; status = "Exit 0" } -> o
     | { output = "" ; error = e ; status = s } -> "[" ^ s ^ "]" ^ " " ^ e
-    | { output = o  ; error = _ ; status = s } -> o ^ "(" ^ s ^ ")"
+    | { output = o  ; error = _ ; status = s } -> "[" ^ s ^ "]" ^ " " ^ o
 
 let execute (env: string array) (command : string): process_output =
 
